@@ -10,6 +10,19 @@ sudo apt-get upgrade -y
 sudo apt install qemu-kvm libvirt-daemon-system virtinst libvirt-clients bridge-utils
 sudo virt-install --name vm3 --ram 4096 --disk path=/var/kvm/images/vm3.img,size=20 --vcpus 2 --os-variant ubuntu18.04 --graphics none --console pty,target_type=serial --location 'http://jp.archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/' --extra-args 'console=ttyS0,115200n8 serial' --machine q35
 ```
+after the installation is finish, shut down the vm3, and then:
+```
+sudo guestmount -d vm3 -i /mnt
+sudo ln -s /mnt/lib/systemd/system/getty@.service /mnt/etc/systemd/system/getty.target.wants/getty@ttyS0.service
+sudo umount /mnt
+```
+after this, you can use virsh console vm3 to get into the vm3, otherwise it will hang up 
+**Connected to domain vm3**, 
+**Escape character is ^]**
+and can`t get into the vm3.
+
+
+
 2. Finding the card, here I have two netronome cards, The card's PCI address is **81:00.0 and 83:00.0**.
 ```
 p4@testbed:~$ sudo lspci -nn|grep -i netronome
@@ -30,7 +43,7 @@ Device pci_0000_83_00_0 reattached
 **Note**: if you meet 
 
 ```
-error: Failed to detach device pci_0000_81_00_0
+error: Failed to detach device pci_0000_83_00_0
 error: Operation not supported: neither VFIO nor KVM device assignment is currently supported on this system
 ```
 You can do this by setting the following in **/etc/default/grub**
