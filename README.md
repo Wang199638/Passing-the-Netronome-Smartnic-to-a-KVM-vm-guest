@@ -1,6 +1,15 @@
 # Passing-the-Netronome-Smartnic-to-a-KVM-vm-guest
 Record the operation, the problems encountered and the solutions
 
+reference:
+
+https://unixwars.blogspot.com/2019/05/passing-network-card-to-kvm-vm-guest.html
+
+https://www.server-world.info/en/note?os=Ubuntu_18.04&p=kvm&f=2
+
+https://help.netronome.com/support/solutions/articles/36000049975-basic-firmware-user-guide#appendix-a-netronome-repositories
+
+https://serverfault.com/questions/633183/how-do-i-enable-kvm-device-passthrough-in-linux
 
 1. Install the VM (Ubuntu 18.04) on the server
 
