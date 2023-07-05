@@ -45,8 +45,8 @@ pci_0000_83_00_0
 ```
 4. let host to leave **pci-0000:83:00.0** alone
 ```
-p4@testbed:~$ sudo virsh nodedev-reattach pci_0000_83_00_0
-Device pci_0000_83_00_0 reattached
+p4@testbed:~$ sudo virsh nodedev-dettach pci_0000_83_00_0
+Device pci_0000_83_00_0 detached
 ```
 
 **Note**: if you meet 
